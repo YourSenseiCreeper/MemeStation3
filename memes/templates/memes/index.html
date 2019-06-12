@@ -1,0 +1,79 @@
+{% extends "memes/skeleton.html" %}
+
+{% block login_button %}
+    {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle btn btn-primary" id="nav-button" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user }}</a>
+        <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+          
+        <a class="dropdown-item" href="{% url 'memes:user' user %}">Profil<i class="fa fa-user" style="margin-left: 10px;"></i></a>
+        <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'memes:logout' %}">Wyloguj<i class="fa fa-sign-out-alt" style="margin-left: 10px;"></i></a>
+        </div>
+        <li class="nav-item">
+            <a href="{% url 'memes:add' %}" id="nav-button" class="btn btn-primary mr-sm-2">Dodaj mema</a>
+        </li>
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    {% if all_memes %}
+        {% for meme in all_memes %}
+        <div class="meme-img">
+            <p class="meme-description center no-bottom">{{ meme.description }}</p>
+            <img class="center" src="{{ meme.image.url }}" alt="{{ meme.description }}" name="meme_id" value="{{ meme.id }}">
+            <table id="meme-bottom"><tr>
+                <td>
+                    <form action='{% url 'memes:like' %}' method='post' style="display: inline;">
+                        {% csrf_token %}
+                        {% if liked %}
+                            <button type="submit" class="meme-button like on">{{ meme.likes_number }}  <i class="fa fa-thumbs-up"></i></button>
+                        {% else %}
+                            <button type="submit" class="meme-button like off">{{ meme.likes_number }}  <i class="fa fa-thumbs-up"></i></button>
+                        {% endif %}
+                        <input type="hidden" name="meme_id" value="{{ meme.id }}">
+                    </form>
+                    <button class="meme-button dislike">{{ meme.dislikes_number }}  <i class="fa fa-thumbs-down"></i></button>
+                </td>
+                <!-- <td> <button class="dislike-button">💬</button></td> -->
+
+                {% if user.is_superuser %}
+                    <td>
+                    {% if meme.waiting %}
+                    <form action='{% url 'memes:status' %}' method='post' style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="meme-button accept" name="meme_id" value="{{ meme.id }}"><i class="far fa-check-circle"></i></button>
+                    </form>
+                    {% else %}
+                    <form action='{% url 'memes:status' %}' method='post' style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="meme-button unaccept" name="meme_id" value="{{ meme.id }}">
+                            <i class="far fa-times-circle"></i></button>
+                    </form>
+                    {% endif %}  
+                    <input type='hidden' id='meme_id' type='text' value='{{ meme.pk }}'>
+                    <a href='admin/memes/meme/{{ meme.id }}/change/' class="meme-button accept"><i class="far fa-edit"></i></a>
+                    <a href='admin/memes/meme/{{ meme.id }}/delete/' class="meme-button unaccept"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                {% endif %}
+                <td id="meme-bottom-description">
+                    <a href='/user/{{ meme.author }}'>{{ meme.author }}</a>, {{ meme.add_date|date:"d/m/Y, H:i" }}
+                </td>
+                <td><p id="meme-id">#{{ meme.pk }}</p></td>
+            </tr></table>
+            <!-- <span class="text center">
+                
+                
+                
+            </span> -->
+        </div>
+        <hr id="spacer">
+        {% endfor %}
+    {% else %}
+        <h3>You don't have any memes! Find some!</h3>
+    {% endif %}
+
+{% endblock %}

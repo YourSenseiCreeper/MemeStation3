@@ -1,0 +1,193 @@
+
+/*Body declaration*/
+#bootstrap-overrides {
+    background-color: #212529;
+}
+
+/*body > h1*/
+#bootstrap-overrrides h1 {
+    color: #fcc728;
+}
+
+#register {
+    font-family: 'Anton', sans-serif;
+    font-size: 15px;
+    color: #a3a3a3;
+}
+
+#register h1 {
+    color: #fcc728;
+}
+
+
+
+.container.main-body{
+    margin: 0px auto;
+    margin-top: 55px;
+    width: 60%;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.meme-img {
+  margin: 0px auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.meme-button{
+    font-family: 'Staatliches', cursive;
+    font-size: 20px;
+    color: #8eff49;
+    background: #343a40;
+    padding: 0px 10px;
+    margin-top: 5px;
+    border: 0px;
+}
+.like, .accept {
+	color: #8eff49;
+}
+
+.on:hover, .on:focus, .on:active{
+	background: #8eff49;
+	color: : #1c2023;
+}
+
+.off:hover, .off:focus, .off:active{
+	background: #fc2828;
+	color: : #1c2023;
+}
+
+.dislike, .unaccept {
+	color: #fc2828;
+}
+
+/*.dislike-button{
+    font-family: 'Staatliches', cursive;
+    font-size: 20px;
+    color: #fc2828;
+    background: #343a40;
+    padding: 0px 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    border: 0px;
+}*/
+
+.meme-button:hover, .meme-button:focus, .meme-button:active{
+	background: #1c2023;
+}
+
+.text{
+    font-family: 'Lobster';
+    font-size: 15px;
+    color: #a3a3a3;
+}
+
+.meme-description{
+    font-family: 'Staatliches', cursive;
+    font-size: 25px;
+    color: #a3a3a3;
+    margin: 0px auto;
+}
+#meme-bottom {
+    margin: 0px auto;
+    width: 70%;
+}
+
+#meme-bottom-description{
+    font-family: 'Staatliches', cursive;
+    font-size: 17px;
+    color: #a3a3a3;
+}
+
+#meme-id{
+    text-align: right;
+    font-family: 'Staatliches', cursive;
+    font-size: 16px;
+    color: #fcc728;
+    margin: 0px;
+}
+
+.navbar-default {
+    width: 60%;
+    margin: 0px auto;
+}
+
+.logo {
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    color: #fcc728;
+}
+
+#footer {
+    width: 60%;
+    margin: 0px auto;
+    margin-bottom: 45px;
+    font-family: 'Staatliches', cursive;
+    text-align: center;
+    color: #fcc728;
+    background-color: #343a40;
+}
+
+#spacer {
+    width: 75%;
+    margin: 0px auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top: 2px solid #fcc728;
+}
+
+.nav-link {
+    font-family: 'Lobster', cursive;
+    color: #fcc728;
+}
+
+#nav-button {
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: #fcc728;
+    border: 0px;
+    transition: color .15s ease-in-out,background-color .5s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.form-login{
+    font-family: 'Staatliches', cursive;
+    color: #fcc728;
+}
+
+.btn-primary {
+    color: #fff;
+    font-family: 'Lobster', cursive !important;
+    background-color: #fcc728 !important;
+    border-color: #fcc728 !important; /*set the color you want here*/
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff !important;
+    background-color: #ba931f !important;
+    border-color: #ba931f !important; /*set the color you want here*/
+}
+a:hover, a:focus, a:active{
+    color: #ba931f !important;
+}
+
+.form-control{
+	margin-bottom: 10px !important;
+	/*margin-right: 10px !important;*/
+}
+
+.user-gallery {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}

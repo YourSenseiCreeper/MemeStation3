@@ -1,0 +1,23 @@
+{% extends "memes/skeleton.html" %}
+
+{% block login_button %}
+    {% if user.is_authenticated %}
+            <a href="{% url 'memes:add' %}" id="nav-button" class="btn btn-primary mr-sm-2">Dodaj mema</a>
+        {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}" id="nav-button" class="btn btn-primary mr-sm-2">{{ user }}</a>
+        {% else %}
+            <a href="{% url 'memes:user' user %}" id="nav-button" class="btn btn-primary mr-sm-2">{{ user }}</a>
+        {% endif %}
+        <a href="{% url 'memes:logout' %}" id="nav-button" class="btn btn-danger">Wyloguj</a>
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="register">
+   <img src="{% static 'media:pictures:oopsError404.jpg' %}">
+   <p>Coś się wykoprytło. Wróć na stronę główną.</p>
+</div>
+
+{% endblock %}

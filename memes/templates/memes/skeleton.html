@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MemeStation</title>
+
+    <!-- Loads the path to your static files -->
+    <!-- Refreshes everytime! -->
+    <link rel="stylesheet" href="{% static 'memes/sitestyle.css' %}?{% now 'U' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'memes/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Staatliches|Anton" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body id="bootstrap-overrides">
+    <nav class="navbar navbar-expand-md fixed-top bg-dark">
+        <a class="navbar-brand logo" href="{% url 'memes:index' %}">MemeStation</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'memes:waitingroom' %}">Poczekalnia</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Załoga</a></li>
+          </ul>
+          <div class="form-row align-items-right">
+    	      <ul class="navbar-nav mr-auto">
+              {% block login_button %}
+              <!-- <button type="submit" class="btn btn-primary" href=""></button> -->
+              <li class="nav-item"><a href="{% url 'memes:login' %}" class="btn btn-primary mr-sm-2">Zaloguj</a></li>
+              <li class="nav-item"><a href="{% url 'memes:register' %}" class="btn btn-primary">Rejestracja</a></li>
+              {% endblock %}
+    	      </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="container main-body">
+        <div class="row">
+            <div class="col">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+</body>
+    <footer id="footer">Created with ❤ by gastherr</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'memes/popper.js' %}"></script>
+<script type="text/javascript" src="{% static 'memes/bootstrap.min.js' %}"></script>
+
+</html>

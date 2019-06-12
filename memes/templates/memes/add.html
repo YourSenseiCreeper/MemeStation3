@@ -1,0 +1,27 @@
+{% extends "memes/skeleton.html" %}
+
+{% block login_button %}
+    {% if user is not None %}
+        <a href="{% url 'memes:add' %}" id="nav-button" class="btn btn-primary mr-sm-2">Dodaj mema</a>
+        {% if user.superuser %}
+            <a href="{% url 'memes:user' %}" id="nav-button" class="btn btn-primary">{{ user }}</a>
+        {% else %}
+            <a href="{% url 'admin:index' %}" id="nav-button" class="btn btn-primary">{{ user }}</a>
+        {% endif %}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="register">
+   <h1>Dodaj mema:</h1>
+    <h4>Twój mem trafi do poczekalni i będzie czekać na akceptację administracji</h4>
+    <form enctype="multipart/form-data" action="{% url 'memes:add' %}"method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Dodaj mema">
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "index.html"}
+
+{% block content %}         
+    {% if all_memes %}
+        {% for meme in all_memes %}
+        <div class="meme-img">
+            <p class="meme-description center">{{ meme.description }}</p>
+            <img class="center" src="{{ meme.image.url }}" alt="{{ meme.description }}">
+            <span class="text center">
+                <button class="like-button">+{{ meme.like }}</button>
+                <button class="dislike-button">-{{ meme.dislike }}</button>
+                added by: {{ meme.author }}, {{ meme.add_date|date:"d M Y" }}
+                <p align="right" class="meme-id">#{{ meme.pk }}</p>
+            </span>
+        </div>
+        <hr align="center" width="50%">
+        {% endfor %}
+    {% else %}
+        <h3>You don't have any memes! Find some!</h3>
+    {% endif %}
+{% endblock %}

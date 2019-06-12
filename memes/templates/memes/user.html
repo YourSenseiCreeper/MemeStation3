@@ -1,0 +1,32 @@
+{% extends "memes/skeleton.html" %}
+
+<!-- {% block login_button %}
+    {% if user.is_authenticated %}
+            <a href="{% url 'memes:add' %}" id="nav-button" class="btn btn-primary mr-sm-2">Dodaj mema</a>
+        {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}" id="nav-button" class="btn btn-primary mr-sm-2">{{ user }}</a>
+        {% else %}
+            <a href="{% url 'memes:user' user %}" id="nav-button" class="btn btn-primary mr-sm-2">{{ user }}</a>
+        {% endif %}
+        <a href="{% url 'memes:logout' %}" id="nav-button" class="btn btn-danger">Wyloguj</a>
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %} -->
+
+{% block content %}
+<div id="register">
+   <h1>{% if user == user_profile %} Cześć {{ user_profile }}! {% else %} Profil {{ user_profile }}{% endif %}</h1>
+   <p>Imię: {{ user_profile }}</p>
+   <p>Memy {{ user_profile }}</p>
+   <div class="user-gallery">
+   {% for meme in memes %}
+   <table>
+    <tr><td><p class="meme-description center no-bottom">{{ meme.description }}</p></td></tr>
+    <tr><td><img class="center" src="{{ meme.image.url }}" style="width: 85%;"></td></tr>
+   </table>
+   {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

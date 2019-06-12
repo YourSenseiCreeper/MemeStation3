@@ -1,0 +1,33 @@
+{% extends "memes/skeleton.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div id="register">
+	<h1>Rejestracja:</h1>
+	<form method="post">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<td>{{ form.username.label_tag }}</td>
+				<td>{{ form.username|add_class:'form-control'|attr:'placeholder:Nazwa' }}</td>
+			</tr>
+			<tr>
+				<td>{{ form.password1.label_tag }}</td>
+				<td>{{ form.password1|add_class:'form-control'|attr:'placeholder:Hasło' }}</td>
+			</tr>
+			<tr>
+				<td>{{ form.password2.label_tag }}</td>
+				<td>{{ form.password2|add_class:'form-control'|attr:'placeholder:Powtórz hasło' }}</td>
+			</tr>
+		</table>
+		<ul>
+					<li>Twoje hasło nie może być zbyt podobne do twoich innych danych osobowych</li>
+					<li>Musi mieć minimum 8 znaków</li>
+					<li>Nie może być hasłem powszechnie używanym np. 'password123', 'qwerty123'</li>
+					<li>Nie może składać się wyłącznie z cyfr</li>
+				</ul>
+		<!-- {{ form.as_p }} -->
+		<input type="submit" class="btn btn-success" value="Rejestracja">
+	</form>
+</div>
+{% endblock %}

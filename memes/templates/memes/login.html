@@ -1,0 +1,28 @@
+{% extends "memes/skeleton.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div id="register">
+    <h1>Panel logowania:</h1>
+    <form method="post">
+        {% csrf_token %}
+<!--         <div class="form-group">
+            <label></label>
+            
+        </div> -->
+        <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username|add_class:'form-control' }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password|add_class:'form-control' }}</td>
+        </tr>
+        </table>
+    <br>
+    <input type="hidden" value="/" name="success">
+    <input type="submit" class='btn btn-success' value="Zaloguj">
+    </form>
+</div>
+{% endblock %}
